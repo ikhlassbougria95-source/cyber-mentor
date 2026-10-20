@@ -1,4 +1,5 @@
 # CyberMentor (FREE) - with 30-day course
+<img width="1240" height="588" alt="Capture d’écran_20-10-2026_111116_localhost" src="https://github.com/user-attachments/assets/ac70e1f0-482e-4e80-b7a6-f9e356024584" />
 
 # 🛡️ CyberMentor - AI Security Mentor & Learning Assistant
 
