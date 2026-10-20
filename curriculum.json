@@ -1,0 +1,961 @@
+{
+ "resources": [
+  {
+   "group": "Tools (official pages)",
+   "items": [
+    {
+     "name": "Nmap",
+     "url": "nmap.org",
+     "note": "Port and service scanning"
+    },
+    {
+     "name": "Burp Suite",
+     "url": "portswigger.net/burp",
+     "note": "Web proxy, your main tool"
+    },
+    {
+     "name": "ffuf",
+     "url": "github.com/ffuf/ffuf",
+     "note": "Content discovery and fuzzing"
+    },
+    {
+     "name": "subfinder",
+     "url": "github.com/projectdiscovery/subfinder",
+     "note": "Subdomain discovery"
+    },
+    {
+     "name": "httpx",
+     "url": "github.com/projectdiscovery/httpx",
+     "note": "Probe live web hosts"
+    },
+    {
+     "name": "nuclei",
+     "url": "github.com/projectdiscovery/nuclei",
+     "note": "Template-based scanner"
+    },
+    {
+     "name": "sqlmap",
+     "url": "sqlmap.org",
+     "note": "SQL injection automation (labs only)"
+    },
+    {
+     "name": "SecLists",
+     "url": "github.com/danielmiessler/SecLists",
+     "note": "Wordlists"
+    },
+    {
+     "name": "OWASP Web Security Testing Guide",
+     "url": "owasp.org/www-project-web-security-testing-guide",
+     "note": "Full testing methodology"
+    }
+   ]
+  },
+  {
+   "group": "Practice labs",
+   "items": [
+    {
+     "name": "PortSwigger Web Security Academy",
+     "url": "portswigger.net/web-security",
+     "note": "Free, best for web vulnerabilities"
+    },
+    {
+     "name": "OverTheWire Bandit",
+     "url": "overthewire.org/wargames/bandit",
+     "note": "Linux through games"
+    },
+    {
+     "name": "TryHackMe",
+     "url": "tryhackme.com",
+     "note": "Guided rooms (free and paid)"
+    },
+    {
+     "name": "HackTheBox Academy",
+     "url": "academy.hackthebox.com",
+     "note": "Structured courses"
+    },
+    {
+     "name": "HackTheBox Labs",
+     "url": "hackthebox.com",
+     "note": "Machines; start with Starting Point"
+    },
+    {
+     "name": "Root-Me",
+     "url": "root-me.org",
+     "note": "French, free challenges"
+    },
+    {
+     "name": "PentesterLab",
+     "url": "pentesterlab.com",
+     "note": "Progressive web exercises"
+    },
+    {
+     "name": "picoCTF",
+     "url": "picoctf.org",
+     "note": "Beginner CTF"
+    },
+    {
+     "name": "OWASP Juice Shop",
+     "url": "owasp.org/www-project-juice-shop",
+     "note": "Vulnerable app for your lab"
+    },
+    {
+     "name": "DVWA",
+     "url": "github.com/digininja/DVWA",
+     "note": "Classic vulnerable app"
+    }
+   ]
+  },
+  {
+   "group": "Courses",
+   "items": [
+    {
+     "name": "Hacker101",
+     "url": "hacker101.com",
+     "note": "HackerOne videos and CTF"
+    },
+    {
+     "name": "SecNumacademie",
+     "url": "secnumacademie.gouv.fr",
+     "note": "ANSSI MOOC in French"
+    },
+    {
+     "name": "Bugcrowd University",
+     "url": "bugcrowd.com",
+     "note": "Bug bounty training (search the site)"
+    }
+   ]
+  },
+  {
+   "group": "Real reports",
+   "items": [
+    {
+     "name": "HackerOne Hacktivity",
+     "url": "hackerone.com/hacktivity",
+     "note": "Public bug reports"
+    },
+    {
+     "name": "Pentester Land",
+     "url": "pentester.land",
+     "note": "Writeups and news index"
+    }
+   ]
+  },
+  {
+   "group": "AI security",
+   "items": [
+    {
+     "name": "PortSwigger LLM attacks",
+     "url": "portswigger.net/web-security/llm-attacks",
+     "note": "Labs on LLM attacks"
+    },
+    {
+     "name": "OWASP GenAI Security",
+     "url": "genai.owasp.org",
+     "note": "Top 10 for LLM apps"
+    },
+    {
+     "name": "MITRE ATLAS",
+     "url": "atlas.mitre.org",
+     "note": "Attacks on AI systems"
+    },
+    {
+     "name": "Gandalf",
+     "url": "gandalf.lakera.ai",
+     "note": "Prompt injection game"
+    }
+   ]
+  },
+  {
+   "group": "YouTube (no links, search the name)",
+   "items": [
+    {
+     "name": "IppSec",
+     "url": "",
+     "note": "HTB walkthroughs"
+    },
+    {
+     "name": "NahamSec",
+     "url": "",
+     "note": "Bug bounty and recon"
+    },
+    {
+     "name": "STOK",
+     "url": "",
+     "note": "Bug bounty"
+    },
+    {
+     "name": "The Cyber Mentor",
+     "url": "",
+     "note": "Pentest for beginners"
+    },
+    {
+     "name": "LiveOverflow",
+     "url": "",
+     "note": "Deep understanding"
+    },
+    {
+     "name": "John Hammond",
+     "url": "",
+     "note": "CTF and analysis"
+    },
+    {
+     "name": "Rana Khalil",
+     "url": "",
+     "note": "PortSwigger lab solutions"
+    }
+   ]
+  },
+  {
+   "group": "Books",
+   "items": [
+    {
+     "name": "Bug Bounty Bootcamp (Vickie Li)",
+     "url": "",
+     "note": "Best starting book"
+    },
+    {
+     "name": "Real-World Bug Hunting (Peter Yaworski)",
+     "url": "",
+     "note": "Case studies"
+    }
+   ]
+  }
+ ],
+ "days": [
+  {
+   "d": 1,
+   "phase": "Week 1: Foundations",
+   "t": "Ethical hacker mindset and the phases",
+   "g": "Know the rules and the workflow before any tool",
+   "c": [
+    "phases: scope, recon, enumeration, vulnerability analysis, exploitation, reporting",
+    "authorization and scope",
+    "minimal impact, confidentiality, honest reporting"
+   ],
+   "tools": [
+    "No tool today"
+   ],
+   "r": [
+    [
+     "OWASP Web Security Testing Guide",
+     "owasp.org/www-project-web-security-testing-guide"
+    ],
+    [
+     "Hacker101",
+     "hacker101.com"
+    ]
+   ],
+   "l": "ACCOUNTS: create free accounts on PortSwigger Academy, TryHackMe, Hack The Box and Hacker101/HackerOne (a HackerOne account only; do NOT test any program yet). Write the 7 phases and 6 ethical rules in your notes"
+  },
+  {
+   "d": 2,
+   "phase": "Week 1: Foundations",
+   "t": "HTTP and how websites work",
+   "g": "Read any request and response",
+   "c": [
+    "methods, status codes, headers, cookies, sessions",
+    "client vs server",
+    "where input enters: URL, body, headers, cookies"
+   ],
+   "tools": [
+    "browser DevTools Network tab"
+   ],
+   "r": [
+    [
+     "TryHackMe web fundamentals rooms",
+     "tryhackme.com"
+    ],
+    [
+     "HTB Academy: Web Requests",
+     "academy.hackthebox.com"
+    ]
+   ],
+   "l": "TRYHACKME: a web/HTTP fundamentals room (search the title). Then in DevTools, capture 5 requests on any site and label method, status, headers, cookies"
+  },
+  {
+   "d": 3,
+   "phase": "Week 1: Foundations",
+   "t": "Burp Suite I: your main tool",
+   "g": "Intercept and replay traffic",
+   "c": [
+    "proxy and certificate",
+    "HTTP history",
+    "Repeater",
+    "scope"
+   ],
+   "tools": [
+    "Burp Proxy",
+    "Burp Repeater"
+   ],
+   "r": [
+    [
+     "Burp Suite docs",
+     "portswigger.net/burp/documentation"
+    ]
+   ],
+   "l": "TRYHACKME: room 'Burp Suite: The Basics'. Then proxy your browser and replay 3 requests in Repeater"
+  },
+  {
+   "d": 4,
+   "phase": "Week 1: Foundations",
+   "t": "Build your lab",
+   "g": "Practice only on targets you own",
+   "c": [
+    "Docker basics",
+    "Juice Shop and DVWA",
+    "why labs are legal and safe"
+   ],
+   "tools": [
+    "docker run"
+   ],
+   "r": [
+    [
+     "OWASP Juice Shop",
+     "owasp.org/www-project-juice-shop"
+    ],
+    [
+     "DVWA",
+     "github.com/digininja/DVWA"
+    ]
+   ],
+   "l": "JUICE SHOP: run it locally, find the Score Board, solve 2 easy challenges"
+  },
+  {
+   "d": 5,
+   "phase": "Week 1: Foundations",
+   "t": "How to find WHERE a vulnerability is",
+   "g": "The core skill: input, handling, trust",
+   "c": [
+    "Ask: where does user input enter?",
+    "Ask: what does the app do with it?",
+    "Ask: what does the app trust without checking?",
+    "input into DB query: SQLi; into HTML: XSS; into a URL fetched by server: SSRF; into a file path: traversal; into an OS command: command injection; an ID: IDOR; state-changing request without token: CSRF"
+   ],
+   "tools": [
+    "Burp HTTP history",
+    "Repeater: change one thing at a time"
+   ],
+   "r": [
+    [
+     "OWASP Web Security Testing Guide",
+     "owasp.org/www-project-web-security-testing-guide"
+    ],
+    [
+     "Hacker101 CTF",
+     "ctf.hacker101.com"
+    ]
+   ],
+   "l": "HACKER101 CTF: first easy level ('A little something to get you started'). On Juice Shop list 10 inputs and guess the vulnerability type for each"
+  },
+  {
+   "d": 6,
+   "phase": "Week 1: Foundations",
+   "t": "Linux for pentesters, applied",
+   "g": "Use the shell to work faster",
+   "c": [
+    "files, permissions, pipes",
+    "grep, find, sort",
+    "ssh"
+   ],
+   "tools": [
+    "bash",
+    "grep"
+   ],
+   "r": [
+    [
+     "OverTheWire Bandit",
+     "overthewire.org/wargames/bandit"
+    ]
+   ],
+   "l": "OVERTHEWIRE BANDIT: levels 0 to 8"
+  },
+  {
+   "d": 7,
+   "phase": "Week 1: Foundations",
+   "t": "Networking and Nmap",
+   "g": "See what a host exposes",
+   "c": [
+    "TCP handshake",
+    "open, closed, filtered",
+    "service versions"
+   ],
+   "tools": [
+    "nmap -sV",
+    "nmap -sC",
+    "nmap -p-"
+   ],
+   "r": [
+    [
+     "Nmap docs",
+     "nmap.org/book/man.html"
+    ]
+   ],
+   "l": "TRYHACKME: Nmap room. Then scan your own Juice Shop container or scanme.nmap.org (light scans only)"
+  },
+  {
+   "d": 8,
+   "phase": "Week 2: Core vulnerabilities",
+   "t": "SQL injection I",
+   "g": "Break and understand a query",
+   "c": [
+    "Ask: where does user input enter?",
+    "Ask: what does the app do with it?",
+    "Ask: what does the app trust without checking?",
+    "string concatenation",
+    "hidden data and login bypass"
+   ],
+   "tools": [
+    "Burp Repeater"
+   ],
+   "r": [
+    [
+     "PortSwigger: SQL injection",
+     "portswigger.net/web-security/sql-injection"
+    ]
+   ],
+   "l": "PORTSWIGGER lab: 'SQL injection vulnerability in WHERE clause allowing retrieval of hidden data'. JUICE SHOP: 'Login Admin'"
+  },
+  {
+   "d": 9,
+   "phase": "Week 2: Core vulnerabilities",
+   "t": "SQL injection II: UNION and sqlmap",
+   "g": "From manual to automation",
+   "c": [
+    "UNION attacks",
+    "blind SQLi idea",
+    "impact: data exposure",
+    "fix: parameterized queries"
+   ],
+   "tools": [
+    "sqlmap (lab only)"
+   ],
+   "r": [
+    [
+     "PortSwigger: SQL injection",
+     "portswigger.net/web-security/sql-injection"
+    ],
+    [
+     "sqlmap",
+     "sqlmap.org"
+    ]
+   ],
+   "l": "PORTSWIGGER: UNION attack labs. Then run sqlmap on DVWA and explain each step"
+  },
+  {
+   "d": 10,
+   "phase": "Week 2: Core vulnerabilities",
+   "t": "XSS I: reflected and stored",
+   "g": "Understand contexts",
+   "c": [
+    "Ask: where does user input enter?",
+    "Ask: what does the app do with it?",
+    "Ask: what does the app trust without checking?",
+    "HTML vs attribute vs JS context",
+    "output encoding"
+   ],
+   "tools": [
+    "Burp",
+    "DevTools"
+   ],
+   "r": [
+    [
+     "PortSwigger: Cross-site scripting",
+     "portswigger.net/web-security/cross-site-scripting"
+    ]
+   ],
+   "l": "PORTSWIGGER labs: 'Reflected XSS into HTML context with nothing encoded' and 'Stored XSS into HTML context with nothing encoded'"
+  },
+  {
+   "d": 11,
+   "phase": "Week 2: Core vulnerabilities",
+   "t": "XSS II: DOM XSS and defenses",
+   "g": "Sources, sinks, CSP",
+   "c": [
+    "DOM sources and sinks",
+    "CSP",
+    "fixes"
+   ],
+   "tools": [
+    "DevTools Sources"
+   ],
+   "r": [
+    [
+     "PortSwigger: DOM-based vulnerabilities",
+     "portswigger.net/web-security/dom-based"
+    ]
+   ],
+   "l": "PORTSWIGGER lab: 'DOM XSS in document.write sink using source location.search'. JUICE SHOP: a DOM XSS challenge"
+  },
+  {
+   "d": 12,
+   "phase": "Week 2: Core vulnerabilities",
+   "t": "Access control I",
+   "g": "Horizontal and vertical privilege",
+   "c": [
+    "Ask: where does user input enter?",
+    "Ask: what does the app do with it?",
+    "Ask: what does the app trust without checking?",
+    "roles",
+    "forced browsing"
+   ],
+   "tools": [
+    "Burp with two accounts"
+   ],
+   "r": [
+    [
+     "PortSwigger: Access control",
+     "portswigger.net/web-security/access-control"
+    ]
+   ],
+   "l": "PORTSWIGGER labs: 'Unprotected admin functionality' and 'User ID controlled by request parameter'"
+  },
+  {
+   "d": 13,
+   "phase": "Week 2: Core vulnerabilities",
+   "t": "IDOR and business logic",
+   "g": "Object references that trust the client",
+   "c": [
+    "predictable IDs",
+    "UUIDs are not authorization",
+    "logic flaws"
+   ],
+   "tools": [
+    "Repeater"
+   ],
+   "r": [
+    [
+     "PortSwigger: IDOR",
+     "portswigger.net/web-security/access-control/idor"
+    ],
+    [
+     "OWASP Juice Shop",
+     "owasp.org/www-project-juice-shop"
+    ]
+   ],
+   "l": "JUICE SHOP: access another user's basket. ROOT-ME: a Web-Server challenge of your choice"
+  },
+  {
+   "d": 14,
+   "phase": "Week 2: Core vulnerabilities",
+   "t": "Authentication flaws",
+   "g": "Weak login logic",
+   "c": [
+    "username enumeration",
+    "brute force protection",
+    "2FA and reset flaws"
+   ],
+   "tools": [
+    "Burp Intruder"
+   ],
+   "r": [
+    [
+     "PortSwigger: Authentication",
+     "portswigger.net/web-security/authentication"
+    ]
+   ],
+   "l": "PORTSWIGGER labs: 'Username enumeration via different responses' and a 2FA bypass lab"
+  },
+  {
+   "d": 15,
+   "phase": "Week 3: More vulnerabilities and recon",
+   "t": "CSRF",
+   "g": "Why requests need anti-forgery tokens",
+   "c": [
+    "state-changing requests",
+    "tokens",
+    "SameSite"
+   ],
+   "tools": [
+    "Burp Repeater"
+   ],
+   "r": [
+    [
+     "PortSwigger: CSRF",
+     "portswigger.net/web-security/csrf"
+    ]
+   ],
+   "l": "PORTSWIGGER lab: 'CSRF vulnerability with no defenses'"
+  },
+  {
+   "d": 16,
+   "phase": "Week 3: More vulnerabilities and recon",
+   "t": "SSRF",
+   "g": "Make the server call internal targets",
+   "c": [
+    "Ask: where does user input enter?",
+    "Ask: what does the app do with it?",
+    "Ask: what does the app trust without checking?",
+    "internal services",
+    "cloud metadata idea"
+   ],
+   "tools": [
+    "Burp Repeater"
+   ],
+   "r": [
+    [
+     "PortSwigger: SSRF",
+     "portswigger.net/web-security/ssrf"
+    ]
+   ],
+   "l": "PORTSWIGGER lab: 'Basic SSRF against the local server'"
+  },
+  {
+   "d": 17,
+   "phase": "Week 3: More vulnerabilities and recon",
+   "t": "Path traversal and file upload",
+   "g": "Read or write where you should not",
+   "c": [
+    "../ sequences",
+    "extension and content-type checks"
+   ],
+   "tools": [
+    "Burp Repeater"
+   ],
+   "r": [
+    [
+     "PortSwigger: Path traversal",
+     "portswigger.net/web-security/file-path-traversal"
+    ],
+    [
+     "PortSwigger: File upload",
+     "portswigger.net/web-security/file-upload"
+    ]
+   ],
+   "l": "PORTSWIGGER labs: 'File path traversal, simple case' and a file upload lab"
+  },
+  {
+   "d": 18,
+   "phase": "Week 3: More vulnerabilities and recon",
+   "t": "OS command injection",
+   "g": "Input reaching the shell",
+   "c": [
+    "shell metacharacters",
+    "blind injection",
+    "fix: avoid shell, allowlists"
+   ],
+   "tools": [
+    "Burp Repeater"
+   ],
+   "r": [
+    [
+     "PortSwigger: OS command injection",
+     "portswigger.net/web-security/os-command-injection"
+    ]
+   ],
+   "l": "PORTSWIGGER lab: 'OS command injection, simple case'"
+  },
+  {
+   "d": 19,
+   "phase": "Week 3: More vulnerabilities and recon",
+   "t": "JWT and OAuth",
+   "g": "Token and login flow flaws",
+   "c": [
+    "JWT parts",
+    "unverified signature",
+    "OAuth redirects"
+   ],
+   "tools": [
+    "jwt.io decoder",
+    "Burp"
+   ],
+   "r": [
+    [
+     "PortSwigger: JWT",
+     "portswigger.net/web-security/jwt"
+    ],
+    [
+     "PortSwigger: OAuth",
+     "portswigger.net/web-security/oauth"
+    ]
+   ],
+   "l": "PORTSWIGGER lab: 'JWT authentication bypass via unverified signature'"
+  },
+  {
+   "d": 20,
+   "phase": "Week 3: More vulnerabilities and recon",
+   "t": "API security testing",
+   "g": "Test REST APIs methodically",
+   "c": [
+    "documentation as attack surface",
+    "mass assignment",
+    "rate limits"
+   ],
+   "tools": [
+    "Burp or Postman"
+   ],
+   "r": [
+    [
+     "PortSwigger: API testing",
+     "portswigger.net/web-security/api-testing"
+    ],
+    [
+     "OWASP API Security",
+     "owasp.org/API-Security"
+    ]
+   ],
+   "l": "PORTSWIGGER lab: 'Exploiting an API endpoint using documentation'"
+  },
+  {
+   "d": 21,
+   "phase": "Week 3: More vulnerabilities and recon",
+   "t": "Recon I: passive",
+   "g": "Collect info without touching the target",
+   "c": [
+    "WHOIS, DNS records",
+    "certificate transparency",
+    "what to record"
+   ],
+   "tools": [
+    "whois",
+    "dig",
+    "crt.sh"
+   ],
+   "r": [
+    [
+     "crt.sh",
+     "crt.sh"
+    ]
+   ],
+   "l": "On a domain YOU own (or example.com): list DNS records and subdomains from crt.sh"
+  },
+  {
+   "d": 22,
+   "phase": "Week 3: More vulnerabilities and recon",
+   "t": "Recon II: active",
+   "g": "Turn a domain into live web targets",
+   "c": [
+    "subdomain enumeration",
+    "probing live hosts",
+    "content discovery",
+    "scope filtering"
+   ],
+   "tools": [
+    "subfinder",
+    "httpx",
+    "ffuf + SecLists"
+   ],
+   "r": [
+    [
+     "subfinder",
+     "github.com/projectdiscovery/subfinder"
+    ],
+    [
+     "httpx",
+     "github.com/projectdiscovery/httpx"
+    ],
+    [
+     "ffuf",
+     "github.com/ffuf/ffuf"
+    ]
+   ],
+   "l": "Run ffuf on your local Juice Shop and list 5 interesting paths. subfinder/httpx only on a domain you own or an allowed program"
+  },
+  {
+   "d": 23,
+   "phase": "Week 4: Reports and real workflow",
+   "t": "Fingerprinting and known vulnerabilities",
+   "g": "From versions to CVEs",
+   "c": [
+    "technology fingerprinting",
+    "CVE and CVSS",
+    "false positives and manual validation"
+   ],
+   "tools": [
+    "Wappalyzer",
+    "NVD",
+    "Exploit-DB",
+    "nuclei and its limits"
+   ],
+   "r": [
+    [
+     "NVD",
+     "nvd.nist.gov"
+    ],
+    [
+     "Exploit-DB",
+     "exploit-db.com"
+    ]
+   ],
+   "l": "Identify the stack of your lab and look up 2 CVEs for one component"
+  },
+  {
+   "d": 24,
+   "phase": "Week 4: Reports and real workflow",
+   "t": "Impact and severity",
+   "g": "Make a finding matter",
+   "c": [
+    "impact analysis",
+    "chaining bugs",
+    "CVSS basics"
+   ],
+   "tools": [
+    "CVSS calculator"
+   ],
+   "r": [
+    [
+     "FIRST CVSS",
+     "first.org/cvss"
+    ]
+   ],
+   "l": "Rate 5 labs you solved with CVSS and justify each score"
+  },
+  {
+   "d": 25,
+   "phase": "Week 4: Reports and real workflow",
+   "t": "Report writing I: structure",
+   "g": "Know every part of a good report",
+   "c": [
+    "title",
+    "summary",
+    "impact",
+    "steps to reproduce",
+    "PoC",
+    "remediation",
+    "severity"
+   ],
+   "tools": [
+    "Markdown template"
+   ],
+   "r": [
+    [
+     "HackerOne Hacktivity",
+     "hackerone.com/hacktivity"
+    ]
+   ],
+   "l": "HACKTIVITY: read 3 public reports and extract their structure"
+  },
+  {
+   "d": 26,
+   "phase": "Week 4: Reports and real workflow",
+   "t": "Report writing II: write your own",
+   "g": "Turn a lab into a professional report",
+   "c": [
+    "clear steps",
+    "evidence",
+    "no exaggeration",
+    "reproducibility"
+   ],
+   "tools": [
+    "Markdown"
+   ],
+   "r": [
+    [
+     "HackerOne Hacktivity",
+     "hackerone.com/hacktivity"
+    ]
+   ],
+   "l": "Write the report for your SQLi or IDOR lab, then paste it in the agent (Report writer) and ask for critique"
+  },
+  {
+   "d": 27,
+   "phase": "Week 4: Reports and real workflow",
+   "t": "First machine end to end",
+   "g": "Apply every phase on one target",
+   "c": [
+    "notes while working",
+    "enumeration to foothold",
+    "short report"
+   ],
+   "tools": [
+    "nmap, ffuf, Burp together"
+   ],
+   "r": [
+    [
+     "HackTheBox Starting Point",
+     "hackthebox.com"
+    ],
+    [
+     "IppSec (YouTube)",
+     ""
+    ]
+   ],
+   "l": "HACK THE BOX: a Starting Point machine (Meow, Fawn or Dancing). Take notes per phase. Do not publish solutions for active machines"
+  },
+  {
+   "d": 28,
+   "phase": "Week 4: Reports and real workflow",
+   "t": "Bug bounty workflow",
+   "g": "Work legally on real programs",
+   "c": [
+    "VDP vs paid",
+    "reading scope",
+    "duplicates",
+    "safe harbor",
+    "communication"
+   ],
+   "tools": [
+    "HackerOne program pages"
+   ],
+   "r": [
+    [
+     "HackerOne Hacktivity",
+     "hackerone.com/hacktivity"
+    ],
+    [
+     "HackerOne",
+     "hackerone.com"
+    ],
+    [
+     "Hacker101 CTF",
+     "ctf.hacker101.com"
+    ]
+   ],
+   "l": "HACKER101 CTF: another level. Pick one VDP, list in-scope assets and rules. Do NOT test yet"
+  },
+  {
+   "d": 29,
+   "phase": "Week 4: Reports and real workflow",
+   "t": "AI security: prompt injection and LLM attacks",
+   "g": "Attack and defend LLM apps",
+   "c": [
+    "direct and indirect injection",
+    "excessive agency",
+    "OWASP LLM Top 10"
+   ],
+   "tools": [
+    "Gandalf",
+    "PortSwigger LLM labs"
+   ],
+   "r": [
+    [
+     "PortSwigger LLM attacks",
+     "portswigger.net/web-security/llm-attacks"
+    ],
+    [
+     "Gandalf",
+     "gandalf.lakera.ai"
+    ],
+    [
+     "OWASP GenAI Security",
+     "genai.owasp.org"
+    ]
+   ],
+   "l": "GANDALF: first levels. PORTSWIGGER lab: 'Exploiting LLM APIs with excessive agency'"
+  },
+  {
+   "d": 30,
+   "phase": "Week 4: Reports and real workflow",
+   "t": "Review and plan",
+   "g": "Find weak spots, plan next month",
+   "c": [
+    "weak points",
+    "redo hardest lab",
+    "next goals"
+   ],
+   "tools": [
+    "your notes and reports"
+   ],
+   "r": [
+    [
+     "Root-Me",
+     "root-me.org"
+    ],
+    [
+     "picoCTF",
+     "picoctf.org"
+    ]
+   ],
+   "l": "Redo your hardest PortSwigger lab from memory; list your 5 weakest topics with /weak"
+  }
+ ]
+}

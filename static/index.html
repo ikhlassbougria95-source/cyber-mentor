@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CyberMentor</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+<style>
+:root{--bg:#0a0a0b;--card:#161617;--card2:#1e1e20;--line:#2b2b2e;--text:#f4f4f5;--muted:#8d8d94;--cta:#e7e7ea;--ctatx:#111;--code:#0d0d0f;--link:#7cc4ff;
+ --sans:"Inter","Segoe UI",system-ui,-apple-system,"Noto Sans Arabic",Tahoma,sans-serif;--mono:"JetBrains Mono","Cascadia Code",ui-monospace,Menlo,Consolas,monospace;color-scheme:dark}
+[data-theme=light]{--bg:#f6f6f7;--card:#fff;--card2:#efeff1;--line:#dcdce0;--text:#121214;--muted:#6b6b73;--cta:#121214;--ctatx:#fff;--code:#f1f1f4;--link:#0b63c5;color-scheme:light}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--text);font:15px/1.65 var(--sans);overflow:hidden}
+button,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.glow{position:fixed;inset:auto 0 0 0;height:42vh;pointer-events:none;z-index:0;transition:opacity .5s;
+ background:radial-gradient(40% 70% at 12% 100%,#c8352f 0,transparent 70%),radial-gradient(45% 80% at 45% 100%,#e0a13a 0,transparent 70%),radial-gradient(40% 60% at 70% 100%,#cfd3e8 0,transparent 70%),radial-gradient(60% 55% at 60% 115%,#2447b8 0,transparent 75%);
+ filter:blur(34px);opacity:.75;-webkit-mask-image:linear-gradient(to top,#000 20%,transparent);mask-image:linear-gradient(to top,#000 20%,transparent)}
+body.chat .glow{opacity:.18}
+[data-theme=light] .glow{opacity:.35}
+.app{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;padding:12px 12px 0}
+/* nav pill */
+.nav{max-width:960px;width:100%;margin:0 auto;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-radius:20px;padding:8px;display:flex;align-items:center;gap:8px}
+.nav .sp{flex:1}
+.pill{height:42px;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:0 14px;display:flex;align-items:center;gap:10px}
+.pill:hover{border-color:var(--muted)}
+.pill.ic{width:46px;justify-content:center;padding:0}
+.menu{border:0;background:none;font-weight:600;height:42px;display:flex;align-items:center;gap:14px;padding:0 12px}
+.bars{width:26px;height:10px;border-top:2px solid currentColor;border-bottom:2px solid currentColor}
+.cta{height:42px;border:0;background:var(--cta);color:var(--ctatx);border-radius:12px;padding:0 18px;font-weight:650}
+.nav select{appearance:none;background:var(--card);border:1px solid var(--line);border-radius:12px;height:42px;padding:0 12px}
+/* stage */
+main{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center}
+body.chat main{justify-content:flex-end}
+#scroll{overflow-y:auto;flex:0 1 auto;min-height:0}
+body.chat #scroll{flex:1}
+.col{max-width:780px;margin:0 auto;padding:18px 6px}
+.hero{text-align:center;padding:0 8px 26px}
+.hero h1{font-size:clamp(34px,7.4vw,66px);line-height:1.04;letter-spacing:-.045em;font-weight:700;margin:0 auto;max-width:12em}
+.hero p{color:var(--muted);margin:14px auto 0;max-width:46ch}
+.msg{display:flex;gap:12px;margin:0 0 22px}
+.av{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;font-size:14px;background:var(--card2);border:1px solid var(--line)}
+.body{min-width:0;flex:1;unicode-bidi:plaintext;overflow-wrap:anywhere}
+.msg.user .body{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:9px 14px}
+.body p{margin:.45em 0}.body ul,.body ol{padding-inline-start:22px;margin:.45em 0}.body h4{margin:1em 0 .2em;font-size:16px}
+.body a{color:var(--link)}
+.body :not(pre)>code{font:.88em var(--mono);background:var(--card2);padding:2px 6px;border-radius:6px}
+.code{margin:.7em 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;direction:ltr;text-align:left}
+.code header{display:flex;justify-content:space-between;background:var(--card2);padding:5px 12px;font:12px var(--mono);color:var(--muted)}
+.code header button{background:none;border:0;color:var(--muted);font:12px var(--mono)}
+.code pre{margin:0;padding:12px 14px;overflow-x:auto;background:var(--code);font:13px/1.55 var(--mono)}
+.dots span{display:inline-block;width:6px;height:6px;margin:0 2px;border-radius:50%;background:var(--muted);animation:b 1s infinite}
+.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}
+@keyframes b{50%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.dots span{animation:none}}
+/* composer */
+.composer{max-width:660px;width:100%;margin:0 auto;padding-bottom:14px;position:relative}
+.box{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:14px 14px 10px}
+.box:focus-within{border-color:var(--muted)}
+textarea{width:100%;background:none;border:0;outline:0;resize:none;min-height:70px;max-height:200px;font-size:17px;unicode-bidi:plaintext}
+textarea::placeholder{color:var(--muted)}
+.bar{display:flex;gap:8px;align-items:center;margin:6px -4px -2px;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:6px}
+.bar .sp{flex:1}
+.sq{height:42px;min-width:46px;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:0 12px;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted)}
+.sq:hover{color:var(--text);border-color:var(--muted)}.sq.rec{color:#ff6b6b;border-color:#ff6b6b}
+#send:disabled{opacity:.4}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.chips button{border:1px solid var(--line);background:color-mix(in srgb,var(--card) 80%,transparent);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--muted)}
+.chips button:hover{color:var(--text)}
+body.chat .chips{display:none}
+.legal{text-align:center;color:var(--muted);font-size:11.5px;margin-top:8px}
+.pop{position:absolute;bottom:92px;inset-inline-start:22px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px;display:none;min-width:210px;z-index:4;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.pop.on{display:block}.pop button{display:block;width:100%;text-align:start;background:none;border:0;padding:9px 12px;border-radius:9px}.pop button:hover{background:var(--card2)}
+/* drawer */
+.drawer{position:fixed;inset:0 auto 0 0;width:300px;max-width:86vw;background:var(--card);border-inline-end:1px solid var(--line);z-index:10;transform:translateX(-102%);transition:transform .2s;padding:16px;display:flex;flex-direction:column;gap:10px}
+.drawer.on{transform:none}.veil{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9;display:none}.veil.on{display:block}
+.drawer h5{margin:8px 4px 0;color:var(--muted);font-weight:500;font-size:12px}
+.drawer .it{background:none;border:0;text-align:start;padding:8px 10px;border-radius:10px;display:flex;justify-content:space-between;gap:8px;color:var(--text)}
+.drawer .it:hover,.drawer .it.on{background:var(--card2)}
+.hist{flex:1;overflow-y:auto;display:flex;flex-direction:column;min-height:0}
+.hist .it{color:var(--muted);white-space:nowrap}.hist .it span:first-child{overflow:hidden;text-overflow:ellipsis}
+.stat{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:10px}.stat b{color:var(--text)}
+@media (max-width:520px){.cta{padding:0 12px}.menu{padding:0 4px;gap:8px}}
+@media (min-width:900px){.drawer{transform:none;width:270px;z-index:2}.veil{display:none!important}.app{margin-left:270px}.menu{display:none}}
+.it.hl{background:var(--card2);border:1px solid var(--line);font-weight:600}
+dialog{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:18px;padding:0;width:min(720px,94vw);max-height:86vh}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.dh button,.tabs button{background:none;border:1px solid var(--line);border-radius:10px;padding:5px 12px}
+.tabs{display:flex;gap:8px;padding:10px 18px 0}.tabs button.on{background:var(--cta);color:var(--ctatx)}
+#pbody{padding:10px 18px 18px;overflow-y:auto;max-height:64vh}
+.row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.row .t{flex:1;min-width:0}.row small{color:var(--muted);display:block}
+.row a{color:var(--link)}.row button{border:1px solid var(--line);background:var(--card2);border-radius:8px;padding:4px 10px}
+#pbody h5{margin:14px 0 4px;color:var(--muted);font-weight:500}
+.prog{height:6px;background:var(--card2);border-radius:9px;margin:8px 0 4px}.prog i{display:block;height:100%;background:var(--link);border-radius:9px}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="veil" id="veil"></div>
+<aside class="drawer" id="drawer">
+  <b style="font-size:18px;padding:4px 6px">🛡 CyberMentor</b>
+  <h5>Your course</h5>
+  <button class="it hl" id="lessonBtn">🎓 Today's lesson</button>
+  <button class="it" id="doneBtn">✅ Mark today done</button>
+  <button class="it" id="weakBtn">🧠 Weak points</button>
+  <button class="it" id="planBtn">📚 Plan &amp; resources</button>
+  <h5>Tools</h5>
+  <button class="it" data-p="daily">📅 Daily briefing</button>
+  <button class="it" data-p="quiz">🧪 Quiz me</button>
+  <button class="it" data-p="report">📝 Report writer</button>
+  <button class="it" data-p="road">🗺️ My roadmap</button>
+  <h5>History</h5><div class="hist" id="hist"></div>
+  <div class="stat">🔥 Streak <b id="st">0</b> days · Chats <b id="cn">0</b></div>
+</aside>
+<dialog id="plan"><div class="dh"><b>📚 30-day plan &amp; resources</b><button id="pclose">✕</button></div>
+  <div class="tabs"><button data-t="days" class="on">30-day plan</button><button data-t="res">Resources</button></div><div id="pbody"></div></dialog>
+<dialog id="weak"><div class="dh"><b>🧠 Weak points</b><button id="wclose">✕</button></div>
+  <div id="wbody" style="padding:12px 18px 18px"><div style="display:flex;gap:8px"><input id="wi" placeholder="Topic you missed, e.g. blind SQLi" style="flex:1;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:var(--text)"><button id="wadd" class="cta" style="height:38px">Add</button></div>
+  <div class="muted" style="margin:8px 0;color:var(--muted);font-size:13px">Tip: in the chat you can also type /weak topic</div><div id="wlist"></div><button id="wquiz" class="cta" style="margin-top:12px;width:100%">🔁 Quiz me on these</button></div></dialog>
+<div class="app">
+  <nav class="nav">
+    <button class="menu" id="menu"><span class="bars"></span>Menu</button>
+    <span class="sp"></span>
+    <button class="pill ic" id="theme" aria-label="Theme">🌙</button>
+    <select id="lang" aria-label="Language"><option value="auto">🌐 Auto</option><option value="English">🇺🇸 EN</option><option value="Arabic">🇸🇦 AR</option><option value="French">🇫🇷 FR</option></select>
+    <button class="cta" id="new">New chat</button>
+  </nav>
+  <main>
+    <div id="scroll"><div class="col" id="log"></div></div>
+    <div class="composer">
+      <div class="pop" id="pop">
+        <button data-p="daily">📅 Daily briefing</button><button data-p="quiz">🧪 Quiz me</button><button data-p="report">📝 Report writer</button><button data-p="road">🗺️ My roadmap</button>
+      </div>
+      <div class="box">
+        <textarea id="q" rows="2" placeholder="Ask about bug bounty, pentesting or AI security…" aria-label="Message"></textarea>
+        <div class="bar">
+          <button class="sq" id="plus" aria-label="Tools">＋</button>
+          <span class="sp"></span>
+          <button class="sq" id="mic" aria-label="Voice">🎤</button>
+          <button class="sq" id="send" aria-label="Send">➤</button>
+        </div>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="legal">Authorized testing only: your own labs, CTFs and in-scope bug bounty programs.</div>
+    </div>
+  </main>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const PROMPTS={
+ daily:()=>`Give me today's briefing (${new Date().toDateString()}): search the web and summarize the 5 most important recent items in cybersecurity and AI security (new CVEs, breaches, tools, research). For each: what happened, why it matters, how to defend, and one thing I can practice today. Include sources.`,
+ quiz:()=>`Quiz me on web security and AI security, one question at a time. Start at medium level and adapt to my answers.`,
+ report:()=>`Help me write a professional bug bounty report. Ask for the vulnerability details step by step, then produce: title, severity, impact, steps to reproduce, PoC and remediation.`,
+ road:()=>`Ask me 3 short questions about my level, then build a 90-day roadmap for pentesting, bug bounty and AI security with weekly goals and free labs.`};
+const CHIPS=[["Start bug bounty","road"],["Today's news","daily"],["Prompt injection lab","Explain prompt injection and indirect prompt injection with a safe hands-on lab."],["كيف أبدأ في الأمن السيبراني؟","كيف أبدأ في الأمن السيبراني من الصفر؟"]];
+let chats=[],cur=null,busy=false,mode='fast',streak={days:[]};
+try{chats=JSON.parse(localStorage.getItem('cm_chats')||'[]');streak=JSON.parse(localStorage.getItem('cm_streak')||'{"days":[]}');$('lang').value=localStorage.getItem('cm_lang')||'auto';setTheme(localStorage.getItem('cm_theme')||'dark')}catch(e){}
+function setTheme(t){document.documentElement.dataset.theme=t;$('theme').textContent=t==='dark'?'🌙':'☀️';try{localStorage.setItem('cm_theme',t)}catch(e){}}
+const save=()=>{try{localStorage.setItem('cm_chats',JSON.stringify(chats.slice(0,50)));localStorage.setItem('cm_streak',JSON.stringify(streak))}catch(e){}};
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const inline=t=>esc(t).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+function md(t){return t.split('```').map((p,i)=>{
+  if(i%2){const m=p.match(/^([^\n]*)\n/);const l=m?m[1].trim():'',c=m?p.slice(m[0].length):p;return `<div class="code"><header><span>${esc(l||'code')}</span><button type="button" data-copy>Copy</button></header><pre><code>${esc(c.replace(/\n$/,''))}</code></pre></div>`}
+  let r='',ls=null;const cl=()=>{if(ls){r+=`</${ls}>`;ls=null}};
+  p.split('\n').forEach(l=>{let m;
+   if(m=l.match(/^\s*[-*•]\s+(.*)/)){if(ls!=='ul'){cl();r+='<ul>';ls='ul'}r+=`<li>${inline(m[1])}</li>`}
+   else if(m=l.match(/^\s*\d+[.)]\s+(.*)/)){if(ls!=='ol'){cl();r+='<ol>';ls='ol'}r+=`<li>${inline(m[1])}</li>`}
+   else if(m=l.match(/^#{1,6}\s+(.*)/)){cl();r+=`<h4>${inline(m[1])}</h4>`}
+   else if(l.trim()){cl();r+=`<p>${inline(l)}</p>`}else cl()});cl();return r}).join('').replace(/<(p|li|ul|ol|h4)>/g,'<$1 dir="auto">')}
+function el(role,html){const d=document.createElement('div');d.className='msg '+role;d.innerHTML=`<div class="av">${role==='bot'?'🛡':'👤'}</div><div class="body">${html}</div>`;$('log').appendChild(d);return d.querySelector('.body')}
+const bottom=()=>{const s=$('scroll');s.scrollTop=s.scrollHeight};
+function hero(){document.body.classList.remove('chat');$('log').innerHTML='<div class="hero"><h1>Your security mentor, in one sentence.</h1><p>Pentesting, bug bounty and AI security in Arabic, French or English, with a legal lab for every answer.</p></div>'}
+function renderChat(){const c=chats.find(x=>x.id===cur);$('log').innerHTML='';if(!c||!c.messages.length)return hero();document.body.classList.add('chat');c.messages.forEach(m=>el(m.role==='user'?'user':'bot',m.role==='user'?`<p>${esc(m.content)}</p>`:md(m.content)));bottom()}
+function renderHist(){$('hist').innerHTML='';chats.forEach(c=>{const b=document.createElement('button');b.className='it'+(c.id===cur?' on':'');b.innerHTML=`<span>${esc(c.title)}</span><span class="x" title="Delete">✕</span>`;
+ b.onclick=e=>{if(e.target.classList.contains('x')){chats=chats.filter(x=>x.id!==c.id);if(cur===c.id)cur=null;save();renderHist();renderChat();return}cur=c.id;renderHist();renderChat();drawer(false)};$('hist').appendChild(b)});
+ $('cn').textContent=chats.length;const d=new Set(streak.days);let n=0,t=new Date();if(!d.has(t.toISOString().slice(0,10)))t.setDate(t.getDate()-1);while(d.has(t.toISOString().slice(0,10))){n++;t.setDate(t.getDate()-1)}$('st').textContent=n}
+function drawer(on){$('drawer').classList.toggle('on',on);$('veil').classList.toggle('on',on)}
+async function send(text,day){
+  text=(text||'').trim();if(!text||busy)return;
+  if(/^\/weak\s+/i.test(text)){addWeak(text.replace(/^\/weak\s+/i,''));$('q').value='';return}
+ busy=true;$('send').textContent='■';$('pop').classList.remove('on');
+  let c=chats.find(x=>x.id===cur);if(!c){c={id:Date.now(),title:(day?'Day '+day+' · ':'')+text.slice(0,38),messages:[],day:day||0};chats.unshift(c);cur=c.id}
+  if(!c.messages.length){$('log').innerHTML='';document.body.classList.add('chat')}
+  c.messages.push({role:'user',content:text});el('user',`<p>${esc(text)}</p>`);$('q').value='';$('q').style.height='auto';
+  const body=el('bot','<span class="dots"><span></span><span></span><span></span></span>');bottom();
+  const d0=new Date().toISOString().slice(0,10);if(!streak.days.includes(d0))streak.days.push(d0);
+  let out='';ctl=new AbortController();
+  try{const r=await fetch('/api/chat',{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:c.messages,lang:$('lang').value,day:c.day||0})});
+    if(!r.ok||!r.body)throw new Error('Server error '+r.status);
+    const rd=r.body.getReader(),dec=new TextDecoder();
+    for(;;){const {done,value}=await rd.read();if(done)break;out+=dec.decode(value,{stream:true});body.innerHTML=md(out);bottom()}
+  }catch(e){out+=(e.name==='AbortError')?'\n\n⏹ (stopped)':'\n\n⚠️ '+e.message+' — is server.py running?';body.innerHTML=md(out)}
+  c.messages.push({role:'assistant',content:out});save();renderHist();busy=false;ctl=null;$('send').textContent='➤';$('q').focus()}
+$('send').onclick=()=>{if(busy&&ctl){ctl.abort();return}send($('q').value)};
+$('q').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();send($('q').value)}});
+$('q').addEventListener('input',e=>{e.target.style.height='auto';e.target.style.height=Math.min(e.target.scrollHeight,200)+'px'});
+$('new').onclick=()=>{cur=null;renderHist();renderChat();$('q').focus()};
+$('menu').onclick=()=>drawer(true);$('veil').onclick=()=>drawer(false);
+$('theme').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+$('lang').onchange=()=>{try{localStorage.setItem('cm_lang',$('lang').value)}catch(e){}};
+$('plus').onclick=e=>{e.stopPropagation();$('pop').classList.toggle('on')};document.addEventListener('click',()=>$('pop').classList.remove('on'));
+document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{drawer(false);cur=null;send(PROMPTS[b.dataset.p]())});
+CHIPS.forEach(([a,p])=>{const b=document.createElement('button');b.textContent=a;b.onclick=()=>send(PROMPTS[p]?PROMPTS[p]():p);$('chips').appendChild(b)});
+$('log').addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(!b)return;navigator.clipboard.writeText(b.closest('.code').querySelector('code').textContent);b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1200)});
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(!SR)$('mic').style.display='none';else{let rec=null;$('mic').onclick=()=>{if(rec){rec.stop();return}rec=new SR();const m={Arabic:'ar-SA',French:'fr-FR',English:'en-US'};rec.lang=m[$('lang').value]||navigator.language||'en-US';
+ rec.onresult=e=>{$('q').value=Array.from(e.results).map(r=>r[0].transcript).join(' ');$('q').dispatchEvent(new Event('input'))};
+ rec.onend=()=>{rec=null;$('mic').classList.remove('rec')};$('mic').classList.add('rec');rec.start()}}
+
+/* ---- weak points ---- */
+let weak=[];try{weak=JSON.parse(localStorage.getItem('cm_weak')||'[]')}catch(e){}
+const sw=()=>{try{localStorage.setItem('cm_weak',JSON.stringify(weak))}catch(e){}$('weakBtn').textContent='🧠 Weak points ('+weak.length+')'};
+function addWeak(t){t=t.trim().slice(0,80);if(t&&!weak.some(w=>w.t===t)){weak.push({t,d:new Date().toISOString().slice(0,10)});sw();drawWeak()}}
+function drawWeak(){const L=$('wlist');L.innerHTML='';if(!weak.length)L.textContent='No weak points yet.';weak.forEach((w,i)=>{const r=document.createElement('div');r.className='row';r.innerHTML=`<div class="t">${esc(w.t)}<small>${w.d}</small></div><button>✕</button>`;r.querySelector('button').onclick=()=>{weak.splice(i,1);sw();drawWeak()};L.appendChild(r)})}
+$('weakBtn').onclick=()=>{drawer(false);drawWeak();$('weak').showModal()};$('wclose').onclick=()=>$('weak').close();
+$('wadd').onclick=()=>{addWeak($('wi').value);$('wi').value=''};$('wi').onkeydown=e=>{if(e.key==='Enter'){addWeak($('wi').value);$('wi').value=''}};
+$('wquiz').onclick=()=>{if(!weak.length)return;$('weak').close();cur=null;send('Quiz me, one question at a time, on these topics I find difficult: '+weak.map(w=>w.t).join('; ')+'. Explain briefly after each answer.')};
+sw();
+/* ---- course ---- */
+let CUR=null,prog={done:[]};
+try{prog=JSON.parse(localStorage.getItem('cm_prog'))||prog}catch(e){}
+const sp=()=>{try{localStorage.setItem('cm_prog',JSON.stringify(prog))}catch(e){}};
+const curDay=()=>{if(!CUR)return 1;for(const d of CUR.days)if(!prog.done.includes(d.d))return d.d;return CUR.days.length};
+const lnk=(n,u)=>u?`<a href="https://${esc(u)}" target="_blank" rel="noopener">${esc(n)}</a>`:esc(n);
+function labels(){const n=curDay();$('lessonBtn').textContent="🎓 Today's lesson · Day "+n;$('doneBtn').textContent='✅ Mark Day '+n+' done'}
+function startLesson(n){const d=CUR.days.find(x=>x.d===n);if(!d)return;$('plan').close();drawer(false);cur=null;
+  send(`Teach me Day ${n}: ${d.t}, step by step. Start with Part 1 only, then wait for me.`,n)}
+let tab='days';
+function drawPlan(){const B=$('pbody');if(!CUR){B.textContent='Curriculum not loaded (is server.py updated?).';return}
+  if(tab==='days'){const pc=Math.round(100*prog.done.length/CUR.days.length);
+    B.innerHTML=`<div class="muted">${prog.done.length}/${CUR.days.length} days done</div><div class="prog"><i style="width:${pc}%"></i></div>`;
+    CUR.days.forEach(d=>{const r=document.createElement('div');r.className='row';
+      r.innerHTML=`<input type="checkbox" ${prog.done.includes(d.d)?'checked':''} aria-label="done"><div class="t"><b>Day ${d.d} · ${esc(d.t)}</b><small>${esc(d.g)}<br>🧪 ${esc(d.l)}<br>${d.r.map(x=>lnk(x[0],x[1])).join(' · ')}</small></div><button>Start</button>`;
+      r.querySelector('input').onchange=e=>{prog.done=e.target.checked?[...new Set([...prog.done,d.d])]:prog.done.filter(x=>x!==d.d);sp();labels();drawPlan()};
+      r.querySelector('button').onclick=()=>startLesson(d.d);B.appendChild(r)})}
+  else{B.innerHTML='';CUR.resources.forEach(g=>{B.insertAdjacentHTML('beforeend',`<h5>${esc(g.group)}</h5>`);g.items.forEach(i=>B.insertAdjacentHTML('beforeend',`<div class="row"><div class="t"><b>${lnk(i.name,i.url)}</b><small>${esc(i.note)}</small></div></div>`))})}}
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t;document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));drawPlan()});
+$('planBtn').onclick=()=>{drawer(false);drawPlan();$('plan').showModal()};$('pclose').onclick=()=>$('plan').close();
+$('lessonBtn').onclick=()=>CUR?startLesson(curDay()):alert('Curriculum not loaded: replace server.py and add curriculum.json, then restart.');
+$('doneBtn').onclick=()=>{if(!CUR)return;const n=curDay();if(!prog.done.includes(n))prog.done.push(n);sp();labels()};
+fetch('/api/curriculum').then(r=>r.json()).then(j=>{CUR=j;labels()}).catch(()=>{});
+renderHist();renderChat();
+</script>
+</body>
+</html>
